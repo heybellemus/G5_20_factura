@@ -2,14 +2,14 @@
 	header('Content-Type: application/json');
 	require_once("../config/conexion.php");
 	require_once("../models/Facturas.php");
-	$facturas = new Facturas(); //variable que va tomar una nueva instancia de la clase facturas
+	$facturas = new Facturas();
 	
 	$body =json_decode(file_get_contents("php://input"), true);
 
 	switch($_GET["op"]){
 	
 		case "GetFacturas":
-			$datos=$facturas->get_facturas();  // la variable datos obtendra todo lo que diga la funcion get_facturas
+			$datos=$facturas->get_facturas();  
 			echo json_encode($datos);
 		break;
 
@@ -30,7 +30,7 @@
 		break;
 
 		case "UpdateFactura":
-			$datos=$facturas->actualizar_factura($body["Numero_Factura"],$body["Id_Socio"],$body["Fecha_Factura"],$body["Detalle"],$body["Sub_Total"],$body["Total_Isv"],$body["Total"],$body["Fecha_Vencimiento"],$body["Estado"]);
+			$datos=$facturas->actualizar_factura($body["Id"],$body["Numero_Factura"],$body["Id_Socio"],$body["Fecha_Factura"],$body["Detalle"],$body["Sub_Total"],$body["Total_Isv"],$body["Total"],$body["Fecha_Vencimiento"],$body["Estado"]);
 			echo json_encode("Factura Actualizada");
 		break;
 

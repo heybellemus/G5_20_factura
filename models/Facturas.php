@@ -21,8 +21,7 @@
 			return $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 		}
 		
-		//INSERT INTO `g5_20`.`ma_facturas` (`Numero_Factura`, `Id_Socio`, `Fecha_Factura`, `Detalle`, `Sub_Total`, `Total_Isv`, `Total`, `Fecha_Vencimiento`, `Estado`) VALUES ('100', '15', '2021-07-21', 'medicamentos pronol', '500', '75', '575', '2022-01-01', 'f');
-
+		
 		public function insert_facturas($Numero_Factura,$Id_Socio, $Fecha_Factura, $Detalle, $Sub_Total, $Total_Isv, $Total, $Fecha_Vencimiento ){
 			$conectar= parent::conexion();
 			parent::set_names();
@@ -51,7 +50,7 @@
 			return $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 		}
 
-		//No actualizar Id 
+		 
 		public function actualizar_factura($Id,$Numero_Factura,$Id_Socio, $Fecha_Factura, $Detalle, $Sub_Total, $Total_Isv, $Total, $Fecha_Vencimiento, $Estado){
 			$conectar= parent::conexion();
 			parent::set_names();
@@ -66,6 +65,7 @@
             $sql->bindValue(7, $Total);
             $sql->bindValue(8, $Fecha_Vencimiento);
             $sql->bindValue(9, $Estado);
+			$sql->bindValue(10, $Id);
 			$sql->execute();
 			return $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 		}
